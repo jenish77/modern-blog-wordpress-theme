@@ -1,0 +1,200 @@
+/*
+Theme Name: Modern Blog Theme
+Theme URI: http://example.com/modern-blog-theme
+Author: Antigravity
+Author URI: http://example.com
+Description: A custom, responsive, and SEO-friendly WordPress blog theme.
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: modern-blog-theme
+Tags: blog, custom-background, custom-logo, custom-menu, featured-images, one-column, two-columns, right-sidebar
+*/
+
+:root {
+    --primary-color: #2563eb;
+    --secondary-color: #1e40af;
+    --text-color: #374151;
+    --bg-color: #f3f4f6;
+    --white: #ffffff;
+    --max-width: 1200px;
+    --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+    --border-radius: 8px;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Basic Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    line-height: 1.6;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Layout Utilities */
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.site-header {
+    background: var(--white);
+    padding: 1.5rem 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-main {
+    padding: 2rem 0;
+}
+
+.grid-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .grid-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Posts */
+.hentry {
+    background: var(--white);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+}
+
+.post-thumbnail {
+    margin-bottom: 1rem;
+}
+
+.post-thumbnail img {
+    width: 100%;
+    border-radius: 4px;
+}
+
+.entry-title {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.entry-title a {
+    color: #111827;
+}
+
+.entry-meta {
+    color: #6b7280;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+}
+
+.read-more {
+    display: inline-block;
+    margin-top: 1rem;
+    font-weight: 500;
+}
+
+/* Sidebar */
+.widget-area {
+    /* Sidebar specific styles */
+}
+
+.widget {
+    background: var(--white);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+}
+
+.widget-title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--bg-color);
+    padding-bottom: 0.5rem;
+}
+
+.widget ul {
+    list-style: none;
+}
+
+.widget ul li {
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--bg-color);
+    padding-bottom: 0.5rem;
+}
+
+.widget ul li:last-child {
+    border-bottom: none;
+}
+
+/* Comments */
+.comments-area {
+     background: var(--white);
+    padding: 1.5rem;
+    margin-top: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Nav */
+.main-navigation ul {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+}
+
+.main-navigation a {
+    color: #4b5563;
+    font-weight: 500;
+}
+
+.main-navigation a:hover {
+    color: var(--primary-color);
+}
+
+/* Footer */
+.site-footer {
+    background: var(--white);
+    padding: 2rem 0;
+    margin-top: 3rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+.site-info {
+    text-align: center;
+    color: #6b7280;
+}
