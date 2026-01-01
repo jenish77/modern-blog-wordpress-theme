@@ -47,6 +47,9 @@ function modern_blog_scripts() {
     
     // Google Fonts (Inter)
     wp_enqueue_style( 'modern-blog-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap', array(), null );
+
+    // Theme JS
+    wp_enqueue_script( 'modern-blog-script', get_template_directory_uri() . '/js/script.js', array(), '1.0.0', true );
 }
 add_action( 'wp_enqueue_scripts', 'modern_blog_scripts' );
 
