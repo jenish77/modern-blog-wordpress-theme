@@ -12,7 +12,7 @@
 
 <div id="page" class="site">
 	<header id="masthead" class="site-header">
-        <div class="container header-inner" style="display: flex; justify-content: space-between; align-items: center;">
+        <div class="container header-inner">
             <div class="site-branding">
                 <?php
                 if ( has_custom_logo() ) :

@@ -21,5 +21,17 @@ function modern_blog_customize_register( $wp_customize ) {
         'section'  => 'modern_blog_footer_options',
         'type'     => 'text',
     ) );
+
+    // Add Primary Color Picker
+    $wp_customize->add_setting( 'modern_blog_primary_color', array(
+        'default'           => '#2563eb',
+        'sanitize_callback' => 'sanitize_hex_color',
+        'transport'         => 'refresh',
+    ) );
+
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'modern_blog_primary_color', array(
+        'label'    => __( 'Primary Theme Color', 'modern-blog-theme' ),
+        'section'  => 'colors', // Core section
+    ) ) );
 }
 add_action( 'customize_register', 'modern_blog_customize_register' );

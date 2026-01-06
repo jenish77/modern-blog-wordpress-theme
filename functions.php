@@ -71,3 +71,29 @@ add_action( 'widgets_init', 'modern_blog_widgets_init' );
 
 // Include Customizer settings
 require get_template_directory() . '/inc/customizer.php';
+
+/**
+ * Add reading time calculation
+ */
+function modern_blog_reading_time() {
+    $content = get_post_field( 'post_content', get_the_ID() );
+    $word_count = str_word_count( strip_tags( $content ) );
+    $reading_time = ceil( $word_count / 200 ); // Average reading speed 200 wpm
+
+    return $reading_time . ' ' . ( $reading_time == 1 ? __( 'min read', 'modern-blog-theme' ) : __( 'mins read', 'modern-blog-theme' ) );
+}
+
+/**
+ * Custom CSS for primary color from Customizer
+ */
+function modern_blog_custom_css() {
+    $primary_color = get_theme_mod( 'modern_blog_primary_color', '#2563eb' );
+    ?>
+    <style type="text/css">
+        :root {
+            --primary-color: <?php echo esc_attr( $primary_color ); ?>;
+        }
+    </style>
+    <?php
+}
+add_action( 'wp_head', 'modern_blog_custom_css' );
