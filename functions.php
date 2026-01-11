@@ -97,3 +97,68 @@ function modern_blog_custom_css() {
     <?php
 }
 add_action( 'wp_head', 'modern_blog_custom_css' );
+/**
+ * Add social share links
+ */
+function modern_blog_social_share() {
+    if ( ! is_singular( 'post' ) ) {
+        return;
+    }
+
+    $post_url   = urlencode( get_permalink() );
+    $post_title = urlencode( get_the_title() );
+
+    $share_links = array();
+
+    if ( get_theme_mod( 'modern_blog_share_facebook', true ) ) {
+        $share_links['facebook'] = array(
+            'url'  => "https://www.facebook.com/sharer/sharer.php?u={$post_url}",
+            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>',
+            'label' => __( 'Facebook', 'modern-blog-theme' ),
+        );
+    }
+
+    if ( get_theme_mod( 'modern_blog_share_twitter', true ) ) {
+        $share_links['twitter'] = array(
+            'url'  => "https://twitter.com/intent/tweet?text={$post_title}&url={$post_url}",
+            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>',
+            'label' => __( 'Twitter', 'modern-blog-theme' ),
+        );
+    }
+
+    if ( get_theme_mod( 'modern_blog_share_linkedin', true ) ) {
+        $share_links['linkedin'] = array(
+            'url'  => "https://www.linkedin.com/shareArticle?mini=true&url={$post_url}&title={$post_title}",
+            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>',
+            'label' => __( 'LinkedIn', 'modern-blog-theme' ),
+        );
+    }
+
+    if ( get_theme_mod( 'modern_blog_share_whatsapp', true ) ) {
+        $share_links['whatsapp'] = array(
+            'url'  => "https://api.whatsapp.com/send?text={$post_title}%20{$post_url}",
+            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-circle"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-13.5 8.38 8.38 0 0 1 3.8.9L21 3z"></path></svg>',
+            'label' => __( 'WhatsApp', 'modern-blog-theme' ),
+        );
+    }
+
+    if ( empty( $share_links ) ) {
+        return;
+    }
+
+    echo '<div class="social-share">';
+    echo '<h3 class="share-title">' . esc_html__( 'Share this post:', 'modern-blog-theme' ) . '</h3>';
+    echo '<div class="share-links">';
+    foreach ( $share_links as $id => $link ) {
+        printf(
+            '<a href="%s" class="share-link share-%s" target="_blank" rel="noopener noreferrer" title="%s">%s<span class="screen-reader-text">%s</span></a>',
+            $link['url'],
+            esc_attr( $id ),
+            esc_attr( sprintf( __( 'Share on %s', 'modern-blog-theme' ), $link['label'] ) ),
+            $link['icon'],
+            esc_html( $link['label'] )
+        );
+    }
+    echo '</div>';
+    echo '</div>';
+}
