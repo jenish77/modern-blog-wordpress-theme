@@ -357,3 +357,52 @@ h1, h2, h3, h4, h5, h6 {
     width: 1px;
     word-wrap: normal !important;
 }
+/* Social Share */
+.social-share {
+    margin: 3rem 0;
+    padding: 2rem;
+    background: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+}
+
+.share-title {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--text-main);
+}
+
+.share-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.share-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    color: var(--white);
+    transition: var(--transition);
+}
+
+.share-link:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    color: var(--white);
+}
+
+.share-facebook { background-color: #1877f2; }
+.share-twitter { background-color: #1da1f2; }
+.share-linkedin { background-color: #0077b5; }
+.share-whatsapp { background-color: #25d366; }
+
+.share-link svg {
+    width: 20px;
+    height: 20px;
+    stroke-width: 2px;
+}
