@@ -43,7 +43,7 @@ get_header();
                                 <div class="entry-summary">
                                     <?php the_excerpt(); ?>
                                 </div>
-                                <a href="<?php the_permalink(); ?>" class="read-more">Read More &rarr;</a>
+                                <a href="<?php the_permalink(); ?>" class="read-more-button">Read More &rarr;</a>
                             </div>
                         </article>
                     <?php
