@@ -97,6 +97,24 @@ function modern_blog_custom_css() {
     <?php
 }
 add_action( 'wp_head', 'modern_blog_custom_css' );
+
+/**
+ * Add inline script to prevent flash of unstyled theme
+ */
+function modern_blog_theme_js_check() {
+    ?>
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (theme === 'dark' || (!theme && systemPrefersDark)) {
+                document.body.classList.add('dark-mode');
+            }
+        })();
+    </script>
+    <?php
+}
+add_action( 'wp_head', 'modern_blog_theme_js_check', 1 );
 /**
  * Add social share links
  */
