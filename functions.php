@@ -180,3 +180,65 @@ function modern_blog_social_share() {
     echo '</div>';
     echo '</div>';
 }
+
+/**
+ * Related Posts Function
+ */
+function modern_blog_related_posts() {
+    global $post;
+    $categories = get_the_category( $post->ID );
+    
+    if ( ! $categories ) {
+        return;
+    }
+
+    $category_visited = array();
+    foreach ( $categories as $category ) {
+        $category_visited[] = $category->term_id;
+    }
+
+    $args = array(
+        'category__in'   => $category_visited,
+        'post__not_in'   => array( $post->ID ),
+        'posts_per_page' => 2,
+        'orderby'        => 'rand',
+    );
+
+    $related_query = new WP_Query( $args );
+
+    if ( $related_query->have_posts() ) :
+        ?>
+        <div class="related-posts">
+            <h3 class="related-title"><?php esc_html_e( 'You might also like', 'modern-blog-theme' ); ?></h3>
+            <div class="grid-layout related-grid">
+                <?php
+                while ( $related_query->have_posts() ) :
+                    $related_query->the_post();
+                    ?>
+                    <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+                        <?php if ( has_post_thumbnail() ) : ?>
+                            <div class="post-thumbnail">
+                                <a href="<?php the_permalink(); ?>">
+                                    <?php the_post_thumbnail( 'medium_large' ); ?>
+                                </a>
+                            </div>
+                        <?php endif; ?>
+
+                        <div class="post-content-wrapper">
+                            <header class="entry-header">
+                                <?php the_title( '<h4 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h4>' ); ?>
+                                <div class="entry-meta">
+                                    <span class="posted-on"><?php echo get_the_date(); ?></span>
+                                </div>
+                            </header>
+                        </div>
+                    </article>
+                    <?php
+                endwhile;
+                ?>
+            </div>
+        </div>
+        <?php
+        wp_reset_postdata();
+    endif;
+}
