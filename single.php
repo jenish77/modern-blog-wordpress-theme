@@ -72,6 +72,11 @@ get_header();
                 // Social Share Links
                 modern_blog_social_share();
 
+                // Related Posts
+                if ( function_exists( 'modern_blog_related_posts' ) ) {
+                    modern_blog_related_posts();
+                }
+
                 // If comments are open or we have at least one comment, load up the comment template.
                 if ( comments_open() || get_comments_number() ) :
                     comments_template();

@@ -473,3 +473,43 @@ body.dark-mode .dark-mode-toggle .moon-icon {
     display: block;
 }
 
+/* Related Posts */
+.related-posts {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.related-title {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--text-headings);
+}
+
+.related-grid {
+    display: grid; /* Ensures it overrides any display issues if grid-layout conflict occurs, though specificity should handle column count */
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .related-grid {
+        grid-template-columns: repeat(2, 1fr) !important; /* Force 2 columns */
+    }
+}
+
+.related-grid .hentry {
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.related-grid .post-thumbnail img {
+    height: 200px;
+}
+
+.related-grid .entry-title {
+    font-size: 1.25rem;
+}
+
+
