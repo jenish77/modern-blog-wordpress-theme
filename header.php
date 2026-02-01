@@ -11,6 +11,9 @@
 <?php wp_body_open(); ?>
 
 <div id="page" class="site">
+    <div id="reading-progress" class="reading-progress-container">
+        <div class="reading-progress-bar"></div>
+    </div>
 	<header id="masthead" class="site-header">
         <div class="container header-inner">
             <div class="site-branding">
