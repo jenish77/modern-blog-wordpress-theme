@@ -1,0 +1,134 @@
+/* Modern Blog Enhancer - Plugin Styles */
+
+/* Reading Time Styles */
+.mbe-reading-time {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #ffffff;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mbe-reading-time:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.mbe-reading-time svg {
+    flex-shrink: 0;
+}
+
+/* Social Share Styles */
+.mbe-social-share {
+    margin-top: 40px;
+    padding: 30px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.mbe-social-share h4 {
+    margin: 0 0 20px 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.mbe-share-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.mbe-share-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.mbe-share-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(0);
+    transition: transform 0.3s ease;
+    border-radius: 50%;
+}
+
+.mbe-share-btn:hover::before {
+    transform: scale(1);
+}
+
+.mbe-share-btn:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.mbe-share-btn svg {
+    position: relative;
+    z-index: 1;
+}
+
+/* Platform-specific colors */
+.mbe-facebook {
+    background: linear-gradient(135deg, #3b5998 0%, #2d4373 100%);
+}
+
+.mbe-twitter {
+    background: linear-gradient(135deg, #1da1f2 0%, #0d8bd9 100%);
+}
+
+.mbe-linkedin {
+    background: linear-gradient(135deg, #0077b5 0%, #005885 100%);
+}
+
+.mbe-whatsapp {
+    background: linear-gradient(135deg, #25d366 0%, #1ebe57 100%);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .mbe-social-share {
+        padding: 20px;
+    }
+    
+    .mbe-share-buttons {
+        justify-content: center;
+    }
+    
+    .mbe-reading-time {
+        font-size: 13px;
+        padding: 8px 14px;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .mbe-social-share {
+        background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    }
+    
+    .mbe-social-share h4 {
+        color: #ecf0f1;
+    }
+}
